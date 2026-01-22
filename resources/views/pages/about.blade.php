@@ -2,12 +2,12 @@
     <div class="bg-[#004B93] pt-8 pb-16 text-center text-white px-4">
         <h1 class="text-2xl md:text-4xl font-black italic">Tentang Kami</h1>
         <p class="text-blue-100 mt-2 max-w-xl mx-auto text-sm md:text-base">
-            Mitra terpercaya UMKM Cikarang sejak 2023. Membangun ekonomi lokal melalui distribusi makanan beku berkualitas.
+            Pusat Distribusi Frozen Food Terbesar di Cikarang. Mendukung ketahanan stok UMKM dan rumah tangga di seluruh wilayah Cikarang sejak 2023.
         </p>
     </div>
 
     {{-- FOTO STATIS BESAR (Hero Image Section) --}}
-    <div class="max-w-6xl mx-auto px-4 mt-4 relative z-20">
+    <div class="max-w-6xl mx-auto px-4 mt-10 relative z-20">
         <div class="relative h-[300px] md:h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
             {{-- Ganti 'about_hero.jpg' dengan foto toko atau gudang Anda --}}
             <img src="{{ asset('images/carousel1.webp') }}" 
@@ -25,42 +25,82 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 py-16 -mt-12 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100">
-                <div class="w-12 h-12 bg-blue-50 text-[#004B93] rounded-2xl flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                </div>
-                <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase italic">Visi Kami</h2>
-                <p class="text-slate-600 leading-relaxed text-lg font-medium">
-                    Menjadi tulang punggung bagi UMKM kuliner di Jawa Barat dengan menyediakan stok makanan beku yang stabil, berkualitas, dan harga distributor yang kompetitif.
-                </p>
-            </div>
-
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100">
-                <div class="w-12 h-12 bg-red-50 text-[#FF2800] rounded-2xl flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase italic">Misi Kami</h2>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start gap-3">
-                        <span class="text-[#FF2800] font-bold">01.</span>
-                        <p>Menyediakan produk <strong>Halal 100%</strong> langsung dari pabrik utama.</p>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-[#FF2800] font-bold">02.</span>
-                        <p>Menjaga kesegaran produk dengan standar gudang pendingin industri.</p>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-[#FF2800] font-bold">03.</span>
-                        <p>Memberikan pelayanan pengiriman cepat untuk mendukung operasional Mitra.</p>
-                    </li>
-                </ul>
-            </div>
+    {{-- SEO Storytelling Section --}}
+    <div class="max-w-4xl mx-auto px-6 py-12 md:py-16 text-center">
+        <span class="text-[#FF2800] font-black text-xs uppercase tracking-[0.3em]">Cerita Kami</span>
+        <h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-4 mb-8 italic uppercase tracking-tighter">Lebih Lengkap, Lebih Hemat</h2>
+        <div class="space-y-6 text-slate-600 leading-relaxed text-base md:text-lg font-medium text-justify md:text-center">
+            <p>
+                <strong>Alfa Frozen Jaya</strong> hadir sebagai jawaban atas kebutuhan stok makanan beku yang terus meningkat di wilayah <strong>Cikarang</strong>. Berawal dari visi untuk mendukung ekonomi lokal, kami kini tumbuh menjadi mitra utama bagi ratusan UMKM kuliner dan ribuan pelanggan setia di kawasan <strong>Cikarang Pusat, Cikarang Selatan, hingga Cikarang Utara</strong>.
+            </p>
+            <p>
+                Kami memahami mobilitas tinggi di area industri <strong>Cikarang</strong>. Oleh karena itu, kami menyediakan <strong>ratusan varian produk</strong> mulai dari nugget, sosis, bakso, hingga kentang goreng yang disimpan dalam sistem <i>cold storage</i> standar industri untuk memastikan kesegaran produk terjaga hingga ke tangan konsumen di area <strong>Jababeka, Lippo Cikarang, Deltamas, hingga kawasan MM2100</strong>.
+            </p>
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 mb-20 text-center">
+    <div class="max-w-7xl mx-auto px-4 pb-16 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 group hover:border-[#004B93] transition-all duration-500 flex flex-col">
+            <div class="w-14 h-14 bg-blue-50 text-[#004B93] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+            </div>
+            
+            <h2 class="text-2xl font-black text-slate-800 mb-6 uppercase italic tracking-tighter">Visi Kami</h2>
+            
+            <p class="text-slate-600 leading-relaxed text-lg font-semibold italic">
+                "Menjadi mitra utama dan tulang punggung bagi UMKM kuliner di wilayah <span class="text-[#004B93]">Cikarang</span> dengan menyediakan stok makanan beku yang stabil, berkualitas, dan harga distributor yang paling kompetitif."
+            </p>
+            
+            <div class="mt-auto pt-8">
+                <div class="h-1 w-20 bg-blue-100 rounded-full group-hover:w-full transition-all duration-700"></div>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 group hover:border-[#FF2800] transition-all duration-500">
+            <div class="w-14 h-14 bg-red-50 text-[#FF2800] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+            </div>
+            
+            <h2 class="text-2xl font-black text-slate-800 mb-6 uppercase italic tracking-tighter">Misi Kami</h2>
+            
+            <ul class="space-y-8">
+                <li class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-black group-hover:bg-[#FF2800] transition-colors">01</div>
+                    <div>
+                        <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-1">Kualitas Pabrik Utama</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Menyediakan produk <span class="text-slate-800 font-bold italic">Halal 100%</span> yang didatangkan langsung dari pabrik utama untuk menjamin keaslian dan harga tangan pertama.</p>
+                    </div>
+                </li>
+                
+                <li class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-black group-hover:bg-[#FF2800] transition-colors">02</div>
+                    <div>
+                        <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-1">Standar Cold Storage</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Menjaga rantai dingin produk dengan standar gudang pendingin industri guna menjamin kesegaran maksimal di wilayah <span class="text-slate-800 font-bold italic">Cikarang</span>.</p>
+                    </div>
+                </li>
+                
+                <li class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-black group-hover:bg-[#FF2800] transition-colors">03</div>
+                    <div>
+                        <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-1">Kecepatan Logistik Lokal</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Memberikan pelayanan pengiriman cepat dan terjadwal ke seluruh wilayah <span class="text-slate-800 font-bold italic">Cikarang</span> demi mendukung kelancaran operasional Mitra.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+    <div class="max-w-4xl mx-auto px-4 mb-12 text-center">
         <div class="bg-[#004B93] p-8 rounded-3xl shadow-2xl text-white relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-16 -mt-16"></div>
             <h3 class="text-gray-300 font-bold uppercase tracking-widest text-xs mb-6">Jam Operasional (Semua Cabang)</h3>
@@ -85,8 +125,7 @@
         </div>
     </div>
 
-    <section id="lokasi" class="pt-20 pb-10 px-6">
-        <div class="bg-slate-50 py-20 border-y border-slate-200">
+        <section id="lokasi" class="bg-slate-50 py-10 border-y border-slate-200">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
                     <span class="text-[#FF2800] font-bold text-xs uppercase tracking-widest">Store Locator</span>

@@ -101,11 +101,12 @@
         </div>
     </section>
 
-    <section class="bg-slate-50 pb-24 px-6">
+    <section class="bg-slate-50 pb-12 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-end justify-between mb-10">
                 <div class="space-y-2">
-                    <span class="text-[#FF2800] font-black text-[10px] uppercase tracking-[0.4em]">Highlight</span>
+                    {{-- Label Highlight dipertegas --}}
+                    <span class="text-[#FF2800] font-black text-[10px] uppercase tracking-[0.4em]">Rekomendasi Hari Ini</span>
                     <h2 class="text-3xl md:text-4xl font-black italic uppercase text-slate-900 leading-none tracking-tighter">Produk Unggulan</h2>
                 </div>
                 <a href="{{ route('catalog') }}" class="hidden md:block text-[11px] font-black uppercase text-[#004B93] border-b-2 border-[#004B93] pb-1 hover:text-[#FF2800] hover:border-[#FF2800] transition-all">Lihat Semua</a>
@@ -114,24 +115,38 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                 @foreach($products as $product)
                 <article class="bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col group">
+                    {{-- Image Container --}}
                     <div class="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden relative mb-4">
-                        <img src="{{ asset('storage/' . $product->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        {{-- Placeholder jika gambar tidak ada --}}
+                        @if($product->image)
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center bg-slate-100 text-slate-300">
+                                <i class="fas fa-image text-3xl"></i>
+                            </div>
+                        @endif
+                    
                         <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#004B93] text-[8px] font-black px-2.5 py-1.5 rounded-xl uppercase tracking-tighter shadow-sm">
                             {{ $product->category }}
                         </span>
                     </div>
 
                     <div class="px-2 flex flex-col flex-grow">
-                        <h3 class="text-xs md:text-sm font-black text-slate-800 uppercase italic leading-tight mb-2 line-clamp-2 h-8 group-hover:text-[#004B93]">
+                        {{-- Nama Produk (Tinggi tetap agar grid simetris) --}}
+                        <h3 class="text-xs md:text-sm font-black text-slate-800 uppercase italic leading-tight mb-2 line-clamp-2 h-8 md:h-10 group-hover:text-[#004B93] transition-colors">
                             {{ $product->name }}
                         </h3>
                         
                         <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
-                            <span class="text-sm md:text-lg font-black text-[#FF2800] italic">
-                                Rp {{ number_format($product->price, 0, ',', '.') }}
-                            </span>
+                            <div class="flex flex-col">
+                                <span class="text-[8px] text-slate-400 font-bold uppercase tracking-widest">Harga Terbaik</span>
+                                <span class="text-sm md:text-lg font-black text-[#FF2800] italic leading-none">
+                                    Rp {{ number_format($product->price, 0, ',', '.') }}
+                                </span>
+                            </div>
                             
-                            <a href="{{ route('catalog') }}" class="w-9 h-9 bg-[#004B93] text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 transition">
+                            {{-- Button CTA ke Katalog --}}
+                            <a href="{{ route('catalog') }}" class="w-9 h-9 bg-[#004B93] text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 hover:bg-[#FF2800] transition-all duration-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
                             </a>
                         </div>
@@ -140,18 +155,21 @@
                 @endforeach
             </div>
 
+            {{-- Mobile View Button --}}
             <div class="mt-12 md:hidden">
                 <a href="{{ route('catalog') }}" class="block w-full text-center bg-white border-2 border-[#004B93] text-[#004B93] py-4 rounded-2xl font-black uppercase text-xs tracking-widest">Lihat Semua Produk</a>
             </div>
         </div>
     </section>
 
-<section class="py-20 bg-slate-50 overflow-hidden">
+<section class="pb-10 pt-4 bg-slate-50 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
+        <div class="text-center mb-6">
             <h2 class="text-3xl md:text-4xl font-black italic text-slate-800 uppercase tracking-tighter">Kepuasan Pelanggan</h2>
             <div class="flex justify-center items-center gap-2 mt-2">
-                <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Ulasan dari pelanggan kami di Google Maps</span>
+                <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">
+                    Rating 5.0 Berdasarkan Ulasan Google Maps
+                </span>
             </div>
         </div>
 
@@ -205,7 +223,7 @@
                 </div>
 
             </div>
-            <div class="swiper-pagination !-bottom-2"></div>
+            <div class="swiper-pagination !-bottom-2 mt-4"></div>
         </div>
     </div>
 </section>
@@ -306,7 +324,7 @@
         </div>
     </section>
 
-    <section class="px-6 pb-24">
+    <section class="pt-6 px-6 pb-6">
         <div class="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
             <div class="relative z-10">
                 <h2 class="text-3xl md:text-5xl font-black italic text-white mb-6 tracking-tighter">Mulai Bisnis Kuliner Anda Bersama Kami</h2>

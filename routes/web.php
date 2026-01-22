@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
         
         // Rekap Absensi (Menampilkan foto, durasi, dan info perangkat)
         Route::get('/admin/recap', [AdminController::class, 'recap'])->name('admin.recap');
-        Route::get('/admin/export', [AdminController::class, 'export'])->name('admin.export');
+        Route::get('/admin/recap/export', [AdminController::class, 'exportExcel'])->name('admin.recap.export');
 
         // CRUD Produk
         Route::prefix('admin/produk')->name('admin.product.')->group(function () {

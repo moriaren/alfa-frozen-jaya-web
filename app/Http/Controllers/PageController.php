@@ -16,8 +16,8 @@ class PageController extends Controller
         // Ambil kategori unik yang ada di database untuk filter navigasi cepat
         $categories = Product::distinct()->pluck('category');
         
-        // HOME: Ambil 8 produk terbaru saja agar loading halaman depan ringan
-        $products = Product::latest()->take(8)->get(); 
+        // HOME: Ambil 8 produk secara acak agar loading halaman depan ringan
+        $products = Product::inRandomOrder()->take(8)->get(); 
 
         return view('pages.home', compact('products', 'categories'));
     }

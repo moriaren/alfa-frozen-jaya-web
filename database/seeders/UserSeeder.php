@@ -37,14 +37,14 @@ class UserSeeder extends Seeder
         // 2. DAFTAR KARYAWAN CABANG (BEKASI & CIKARANG)
         $karyawanData = [
             ['name' => 'Tommy - Developer', 'email' => 'tommy@test.com'],
-            ['name' => 'Iqbal - Cabang Pilar', 'email' => 'iqbal@test.com'],
-            ['name' => 'Tegar - Cabang Pilar', 'email' => 'tegar@test.com'],
-            ['name' => 'Rendy - Cabang Mega Regency', 'email' => 'rendy@test.com'],
-            ['name' => 'Mizy - Cabang Mega Regency', 'email' => 'mizy@test.com'],
-            ['name' => 'Latif - Cabang Jababeka', 'email' => 'latif@test.com'],
-            ['name' => 'Ari - Cabang Jababeka', 'email' => 'ari@test.com'],
-            ['name' => 'Umar - Cabang Ciantra', 'email' => 'umar@test.com'],
-            ['name' => 'Reza - Cabang Ciantra', 'email' => 'reza@test.com'],
+            ['name' => 'Iqbal', 'email' => 'iqbal@test.com'],
+            ['name' => 'Tegar', 'email' => 'tegar@test.com'],
+            ['name' => 'Rendy', 'email' => 'rendy@test.com'],
+            ['name' => 'Mizy', 'email' => 'mizy@test.com'],
+            ['name' => 'Latif', 'email' => 'latif@test.com'],
+            ['name' => 'Ari', 'email' => 'ari@test.com'],
+            ['name' => 'Umar', 'email' => 'umar@test.com'],
+            ['name' => 'Reza', 'email' => 'reza@test.com'],
         ];
 
         foreach ($karyawanData as $data) {

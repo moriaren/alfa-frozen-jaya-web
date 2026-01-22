@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Exports\AttendanceExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -28,7 +30,7 @@ class AdminController extends Controller
     public function employeeDashboard()
     {
         $attendance = Attendance::where('user_id', Auth::id())
-            ->whereDate('created_at', Carbon::today())
+            ->whereDate('date', Carbon::today())
             ->first();
 
         $myLogs = Attendance::where('user_id', Auth::id())
@@ -45,32 +47,18 @@ class AdminController extends Controller
 
     public function productIndex(Request $request)
     {
-        // Membangun query dasar
         $query = Product::query();
-
-        // Filter 1: Pencarian Nama (Jika ada input 'search')
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
-
-        // Filter 2: Kategori (Jika ada input 'category')
-        // Ini adalah bagian krusial yang memastikan filter kategori bekerja
         if ($request->filled('category')) {
             $query->where('category', $request->category);
         }
-
-        // Eksekusi query dengan urutan terbaru dan pagination
-        $products = $query->latest()
-            ->paginate(10)
-            ->withQueryString(); // Menjaga parameter filter tetap ada saat pindah halaman (pagination)
-
+        $products = $query->latest()->paginate(10)->withQueryString();
         return view('pages.catalog-admin', compact('products'));
     }
 
-    public function productCreate()
-    {
-        return view('pages.product-create');
-    }
+    public function productCreate() { return view('pages.product-create'); }
 
     public function productStore(Request $request)
     {
@@ -82,14 +70,12 @@ class AdminController extends Controller
         ]);
 
         $imagePath = $request->file('image')->store('products', 'public');
-
         Product::create([
-            'name'     => $request->name,
+            'name' => $request->name,
             'category' => $request->category,
-            'price'    => $request->price,
-            'image'    => $imagePath,
+            'price' => $request->price,
+            'image' => $imagePath,
         ]);
-
         return redirect()->route('admin.product.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
@@ -102,7 +88,6 @@ class AdminController extends Controller
     public function productUpdate(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
         $request->validate([
             'name'     => 'required|string|max:255',
             'category' => 'required|string',
@@ -111,132 +96,135 @@ class AdminController extends Controller
         ]);
 
         $data = $request->only(['name', 'category', 'price']);
-
         if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
+            if ($product->image) { Storage::disk('public')->delete($product->image); }
             $data['image'] = $request->file('image')->store('products', 'public');
         }
-
         $product->update($data);
-
         return redirect()->route('admin.product.index')->with('success', 'Data produk diperbarui.');
     }
 
     public function productDestroy($id)
     {
         $product = Product::findOrFail($id);
-
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
-        }
-
+        if ($product->image) { Storage::disk('public')->delete($product->image); }
         $product->delete();
-
         return redirect()->route('admin.product.index')->with('success', 'Produk berhasil dihapus.');
     }
 
     // ==========================================
-    // 3. SISTEM ABSENSI (GPS Validation & WebP)
+    // 3. SISTEM ABSENSI (ATURAN DUAL SHIFT)
     // ==========================================
 
     public function clockIn(Request $request)
-{
-    $request->validate([
-        'photo' => 'required|image|max:2048',
-    ]);
+    {
+        $request->validate([
+            'photo' => 'required|image|max:2048',
+        ]);
 
-    $imagePath = $request->file('photo')->getRealPath();
+        $now = now();
+        $currentTime = $now->format('H:i:s');
+        
+        // 1. Validasi Batas Awal (Minimal jam 05:45)
+        if ($currentTime < "05:45:00") {
+            return back()->with('error', 'Sistem absen baru dibuka jam 05:45.');
+        }
 
-    // Cek GPS tapi JANGAN gagalkan proses jika tidak ada
-    $exif = @exif_read_data($imagePath);
-    $locationData = "Lokasi Tidak Terdeteksi";
-    
-    if ($exif && isset($exif['GPSLatitude'])) {
-        $locationData = "Lokasi Tersemat di Foto";
+        // 2. Tentukan Status Awal (Hadir/Telat)
+        $status = 'Telat'; // Defaultnya telat
+
+        // Jendela Hadir Shift 1 (05:45 - 06:05)
+        if ($currentTime >= "05:45:00" && $currentTime <= "06:05:00") {
+            $status = 'Hadir';
+        } 
+        // Jendela Hadir Shift 2 (11:45 - 12:05)
+        elseif ($currentTime >= "11:45:00" && $currentTime <= "12:05:00") {
+            $status = 'Hadir';
+        }
+
+        // 3. Proses Foto ke WebP
+        $imagePath = $request->file('photo')->getRealPath();
+        $filename = 'att_' . time() . '.webp';
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($imagePath);
+        $encoded = $image->toWebp(80); 
+        Storage::disk('public')->put('attendance/' . $filename, $encoded);
+
+        // 4. Simpan Database
+        Attendance::create([
+            'user_id'  => Auth::id(),
+            'date'     => $now->format('Y-m-d'),
+            'clock_in' => $currentTime,
+            'photo'    => 'attendance/' . $filename,
+            'status'   => $status,
+        ]);
+
+        return back()->with('success', "Absen masuk berhasil! Status: $status");
     }
-
-    // Tetap proses simpan agar karyawan tidak kesal karena error teknis
-    $filename = 'att_' . time() . '.webp';
-    $manager = new ImageManager(new Driver());
-    $image = $manager->read($imagePath);
-    $encoded = $image->toWebp(80); 
-
-    Storage::disk('public')->put('attendance/' . $filename, $encoded);
-
-    Attendance::create([
-        'user_id'     => Auth::id(),
-        'clock_in'    => now(),
-        'device_info' => $request->header('User-Agent'),
-        'photo'       => 'attendance/' . $filename,
-        'note'        => $locationData // Simpan status GPS di kolom catatan
-    ]);
-
-    return back()->with('success', 'Absen Berhasil! Semangat bekerja.');
-}
 
     public function clockOut(Request $request)
-{
-    // 1. Cari data absensi hari ini milik user yang sedang login
-    $attendance = Attendance::where('user_id', Auth::id())
-        ->whereDate('created_at', Carbon::today())
-        ->first();
+    {
+        $attendance = Attendance::where('user_id', Auth::id())
+            ->where('date', now()->format('Y-m-d'))
+            ->first();
 
-    // 2. Validasi: Apakah karyawan sudah absen masuk?
-    if (!$attendance) {
-        return back()->with('error', 'Gagal! Anda belum melakukan Absen Masuk hari ini.');
+        if ($attendance && !$attendance->clock_out) {
+            $now = now();
+            $in = Carbon::parse($attendance->clock_in);
+            
+            $totalMinutes = $in->diffInMinutes($now);
+            $totalHours = $totalMinutes / 60;
+            
+            // Lembur HANYA JIKA kerja >= 10 jam (Shift 9j + 1j toleransi)
+            $isLembur = ($totalHours >= 10.00);
+            
+            // Format Status Gabungan
+            $newStatus = $isLembur ? ($attendance->status . " - Lembur") : $attendance->status;
+
+            $attendance->update([
+                'clock_out'   => $now->format('H:i:s'),
+                'total_hours' => number_format($totalHours, 2, '.', ''),
+                'status'      => $newStatus
+            ]);
+
+            $durationMsg = floor($totalHours) . " jam " . ($totalMinutes % 60) . " menit";
+            return back()->with('success', "Absen pulang berhasil! Status: $newStatus");
+        }
+
+        return back()->with('error', 'Data tidak ditemukan.');
     }
 
-    // 3. Validasi: Apakah sudah absen pulang sebelumnya?
-    if ($attendance->clock_out) {
-        return back()->with('error', 'Anda sudah melakukan Absen Pulang hari ini.');
-    }
-
-    // 4. Proses Update Jam Pulang
-    $attendance->update([
-        'clock_out' => now(),
-        'device_info' => $request->header('User-Agent'), // Update info perangkat terakhir
-    ]);
-
-    return back()->with('success', 'Absen Pulang Berhasil. Hati-hati di jalan!');
-}
+    // ==========================================
+    // 4. REKAP & EXPORT
+    // ==========================================
 
     public function recap(Request $request)
     {
         $query = Attendance::with('user');
-
         if ($request->filled('search')) {
             $query->whereHas('user', function($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%');
             });
         }
-
         if ($request->filled('start_date') && $request->filled('end_date')) {
-            $query->whereBetween('created_at', [
-                $request->start_date . ' 00:00:00',
-                $request->end_date . ' 23:59:59'
-            ]);
+            $query->whereBetween('date', [$request->start_date, $request->end_date]);
         }
-
-        $attendances = $query->latest()->paginate(15);
-
-        $attendances->getCollection()->transform(function ($item) {
-            if ($item->clock_in && $item->clock_out) {
-                $in = Carbon::parse($item->clock_in);
-                $out = Carbon::parse($item->clock_out);
-                $item->duration = $in->diff($out)->format('%Hj %Im');
-            } else {
-                $item->duration = 'Aktif';
-            }
-            return $item;
-        });
-
+        $attendances = $query->latest('date')->paginate(15)->withQueryString();
         return view('pages.recap', compact('attendances'));
     }
 
-    public function export(Request $request)
+    public function exportExcel(Request $request) 
     {
-        return back()->with('success', 'Fitur export sedang disiapkan.');
+        $query = Attendance::with('user');
+        if ($request->filled('search')) {
+            $query->whereHas('user', function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%');
+            });
+        }
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('date', [$request->start_date, $request->end_date]);
+        }
+        $data = $query->orderBy('date', 'desc')->get();
+        return Excel::download(new AttendanceExport($data), 'rekap-absensi-afj.xlsx');
     }
 }

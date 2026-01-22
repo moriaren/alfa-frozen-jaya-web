@@ -1,8 +1,8 @@
 <x-guest-layout>
     <div class="bg-[#004B93] pt-8 pb-16 text-center text-white px-4">
-        <h1 class="text-2xl md:text-4xl font-black italic">Katalog Produk</h1>
-        <p class="text-blue-100 mt-2 max-w-xl mx-auto text-sm md:text-base">
-            Temukan berbagai kebutuhan frozen food, bahan pokok, hingga kebutuhan rumah tangga.
+        <h1 class="text-2xl md:text-4xl font-black italic">Katalog Online</h1>
+        <p class="text-blue-100 mt-2 max-w-xl mx-auto text-sm md:text-base"> 
+            Dapatkan harga grosir tangan pertama untuk kebutuhan rumah tangga dan mitra UMKM kuliner.
         </p>
     </div>
 
@@ -12,9 +12,23 @@
             <div class="flex flex-col md:flex-row gap-8">
                 
                 <aside class="hidden md:block w-64 flex-shrink-0">
-                    <div class="sticky top-24 space-y-4">
-                        <h3 class="font-bold text-slate-800 text-lg border-b pb-2 border-slate-200">Kategori</h3>
-                        
+                    <div class="sticky top-24 space-y-6">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg border-b pb-2 border-slate-200">Kategori</h3>
+                            
+                            {{-- Trust Badges Section --}}
+                            <div class="mt-4 flex flex-col gap-2">
+                                <div class="bg-blue-50 border border-blue-100 px-3 py-2 rounded-xl flex items-center gap-3 shadow-sm">
+                                    <span class="text-lg">❄️</span>
+                                    <span class="text-[9px] font-black text-[#004B93] leading-tight uppercase tracking-wider">Cold Chain<br>Guaranteed</span>
+                                </div>
+                                <div class="bg-green-50 border border-green-100 px-3 py-2 rounded-xl flex items-center gap-3 shadow-sm">
+                                    <span class="text-lg">✅</span>
+                                    <span class="text-[9px] font-black text-green-700 leading-tight uppercase tracking-wider">Halal<br>Certified 100%</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="flex flex-col space-y-2">
                             @php $currentCat = request('category'); @endphp
 
@@ -137,6 +151,22 @@
                         </div>
                     @endif
 
+                    {{-- SEO Section di bawah Katalog --}}
+                    <div class="max-w-7xl mx-auto px-6 py-12 border-t border-slate-100">
+                        <div class="bg-slate-50 p-8 rounded-[2.5rem]">
+                            <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4 italic">
+                                Pusat Grosir Frozen Food Cikarang
+                            </h2>
+                            <div class="text-[11px] font-medium text-slate-500/80 leading-relaxed space-y-3">
+                                <p>
+                                    Selamat datang di katalog online <strong>Alfa Frozen Jaya</strong>. Kami adalah mitra distribusi utama untuk berbagai kebutuhan makanan beku di <strong>Cikarang</strong>. Katalog ini mencakup ratusan produk dari merek-merek ternama yang sudah terjamin kualitas dan kehalalannya.
+                                </p>
+                                <p>
+                                    Dapatkan kemudahan akses suplai stok untuk bisnis katering, restoran, maupun kebutuhan rumah tangga Anda. Kami melayani pengiriman area <strong>Cikarang Pusat, Selatan, hingga Utara</strong> dengan jaminan rantai dingin yang terjaga.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>
