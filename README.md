@@ -16,7 +16,7 @@
     * **Desktop:** Elegant header featuring dual branding (AFJ & Sembako).
         ![Screenshot Dekstop](public/images/RM2.jpg)
     * **Mobile:** Intuitive bottom navigation bar for a native app-like user experience.
-        ![Screenshot Mobile](public/images/RM3.jpg)
+        ![Screenshot Mobile](public/images/RM3.jpeg)
 * **Reseller Gateway:** A dedicated landing page for partnership information and reseller registration.
   ![Screenshot Reseller](public/images/RM4.jpg)
 
