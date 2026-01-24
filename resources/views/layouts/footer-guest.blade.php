@@ -59,7 +59,7 @@
         <p class="text-[9px] font-bold text-slate-600 uppercase tracking-[0.3em] flex items-center justify-center flex-wrap gap-1">
             <span>&copy; {{ date('Y') }} ALFA FROZEN JAYA</span>
             <span class="opacity-30 mx-1">•</span>
-            <span>Designed & Developed by</span>
+            <span>Developed by</span>
             <a href="https://www.instagram.com/tommoriaren/" 
                 target="_blank" 
                 rel="noopener noreferrer"
