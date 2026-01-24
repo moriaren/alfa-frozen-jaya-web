@@ -7,18 +7,26 @@
 
 ---
 
-## 🌟 Fitur Utama
+## 🌟 Key Features
 
 ### 1. Digital Katalog (Customer Facing)
-* **Seamless Browsing:** Antarmuka modern untuk menjelajahi produk frozen food dan sembako.
-* **Responsive Dual-Nav:** * **Desktop:** Header elegan dengan logo ganda (AFJ & Sembako).
-    * **Mobile:** Bottom navigation bar yang intuitif untuk pengalaman layaknya aplikasi mobile asli.
-* **Reseller Gateway:** Halaman khusus informasi kemitraan dan pendaftaran reseller.
+* **Seamless Browsing:** A modern interface designed for effortless exploration of frozen food and staple goods.
+  ![Screenshot Home](images/RM1.jpg)
+* **Responsive Dual-Nav:**
+    * **Desktop:** Elegant header featuring dual branding (AFJ & Sembako).
+        ![Screenshot Dekstop](images/RM2.jpg)
+    * **Mobile:** Intuitive bottom navigation bar for a native app-like user experience.
+        ![Screenshot Mobile](images/RM3.jpg)
+* **Reseller Gateway:** A dedicated landing page for partnership information and reseller registration.
+  ![Screenshot Reseller](images/RM4.jpg)
 
 ### 2. Sistem Absensi (Internal Operations)
-* **Pencatatan Kehadiran:** Sistem login karyawan untuk melakukan absensi masuk dan pulang secara digital.
-* **Manajemen Data Staf:** Monitoring kehadiran harian oleh admin untuk efisiensi penggajian dan disiplin kerja.
-* **Security Auth:** Proteksi halaman absensi sehingga hanya bisa diakses oleh staf resmi.
+* **Digital Logs:** Secure employee login system for recording daily clock-in and clock-out times.
+  ![Screenshot Login](images/RM5.jpg)
+* **Staff Data Management:** Real-time attendance monitoring for administrators to streamline payroll and discipline.
+  ![Screenshot Administrator](images/RM6.jpg)
+* **Secure Authentication:** Role-based access control ensuring the attendance portal is restricted to authorized staff only.
+  ![Screenshot Attendance](images/RM7.jpg)
 
 ---
 
@@ -31,60 +39,60 @@
 
 ---
 
-## 🚀 Panduan Instalasi
+## 🚀 Installation Guide
 
-### Prasyarat
+### Prerequisites
 * PHP >= 8.1
 * Composer
 * Node.js & NPM
 * MySQL Server
 
-### Langkah-langkah
+### Steps to Run
 1.  **Clone Repository**
     ```bash
     git clone [https://github.com/username/alfa-frozen-jaya-portal.git](https://github.com/username/alfa-frozen-jaya-portal.git)
     cd alfa-frozen-jaya-portal
     ```
 
-2.  **Instalasi Dependency**
+2.  **Install Dependencies**
     ```bash
     composer install
     npm install && npm run build
     ```
 
-3.  **Konfigurasi Environment**
+3.  **Environment Configuration**
     ```bash
     cp .env.example .env
     php artisan key:generate
     ```
     *Sesuaikan variabel `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` di file `.env`.*
 
-4.  **Migrasi Database**
+4.  **Database Migration & Seeding**
     ```bash
     php artisan migrate --seed
     ```
 
-5.  **Jalankan Server**
+5.  **Launch Server**
     ```bash
     php artisan serve
     ```
-    Akses aplikasi di: `http://localhost:8000`
+    Access the application at: `http://localhost:8000`
 
 ---
 
-## 📂 Struktur Penting
-* `resources/views/components/`: Berisi komponen Navbar Desktop dan Mobile.
-* `app/Http/Controllers/`: Logika sistem katalog dan algoritma absensi.
-* `public/images/`: Penyimpanan aset visual (logoafj.jpg dan logo pendukung).
+## 📂 Project Structure
+* `resources/views/components/`: Contains Desktop and Mobile Navbar components.
+* `app/Http/Controllers/`: Core logic for the catalog and attendance algorithms.
+* `public/images/`: Visual assets and branding logos.
 
-## 📄 Status Proyek & Lisensi
-Proyek ini dikembangkan dalam rangka program **Project Based Learning (PBL) / On the Job Training (OJT)**.
+## 📄 Project Status & License
+Developed as part of the Project Based Learning (PBL) / On the Job Training (OJT) program.
 
-* **Pengembang:** Tommy
-* **Institusi:** BBPVP Bekasi
-* **Mitra Industri:** Alfa Frozen Jaya (AFJ)
+* **Developer:** Tommy
+* **Institution:** BBPVP Bekasi
+* **Industry Partner:** Alfa Frozen Jaya (AFJ)
 
-Seluruh hak cipta atas aset desain dan kode sumber ini mengikuti kebijakan kesepakatan antara pihak institusi pendidikan dan mitra industri terkait. Penggunaan di luar kepentingan edukasi dan operasional AFJ memerlukan izin tertulis.
+All rights to design assets and source code are subject to the agreement between the educational institution and the industry partner. Use outside of educational or AFJ operational purposes requires written permission.
 
 ---
 **Maintained by:** Tommy ([@tommoriaren](https://github.com/tommoriaren))
