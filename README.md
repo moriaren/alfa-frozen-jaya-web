@@ -11,22 +11,22 @@
 
 ### 1. Digital Katalog (Customer Facing)
 * **Seamless Browsing:** A modern interface designed for effortless exploration of frozen food and staple goods.
-  ![Screenshot Home](images/RM1.jpg)
+  <img src="public/images/RM1.jpg" width="800" alt="Screenshot Home">
 * **Responsive Dual-Nav:**
     * **Desktop:** Elegant header featuring dual branding (AFJ & Sembako).
-        ![Screenshot Dekstop](images/RM2.jpg)
+        <img src="public/images/RM2.jpg" width="800" alt="Screenshot Dekstop">
     * **Mobile:** Intuitive bottom navigation bar for a native app-like user experience.
-        ![Screenshot Mobile](images/RM3.jpg)
+        <br><img src="public/images/RM3.jpeg" width="280" alt="Screenshot Mobile">
 * **Reseller Gateway:** A dedicated landing page for partnership information and reseller registration.
-  ![Screenshot Reseller](images/RM4.jpg)
+  <img src="public/images/RM4.jpg" width="800" alt="Screenshot Reseller">
 
 ### 2. Sistem Absensi (Internal Operations)
 * **Digital Logs:** Secure employee login system for recording daily clock-in and clock-out times.
-  ![Screenshot Login](images/RM5.jpg)
+  <img src="public/images/RM5.jpg" width="800" alt="Screenshot Login">
 * **Staff Data Management:** Real-time attendance monitoring for administrators to streamline payroll and discipline.
-  ![Screenshot Administrator](images/RM6.jpg)
+  <img src="public/images/RM6.jpg" width="800" alt="Screenshot Administrators">
 * **Secure Authentication:** Role-based access control ensuring the attendance portal is restricted to authorized staff only.
-  ![Screenshot Attendance](images/RM7.jpg)
+  <img src="public/images/RM7.jpg" width="800" alt="Screenshot Attendance">
 
 ---
 
