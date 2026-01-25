@@ -9,7 +9,13 @@
 
 ## 📖 Background
 
-Developed to support <strong>Alfa Frozen Jaya's digital transformation</strong>, this portal integrates a professional <strong>Digital Catalog</strong> for resellers with an efficient <strong>Internal Management Tool</strong>. By replacing manual workflows with a web-based solution, the platform enhances product accessibility and ensures high data integrity for staff attendance records.
+Developed to drive Alfa Frozen Jaya's digital transformation, this portal is designed as a dual-sided solution to modernize both market presence and operational management.
+
+🌐 The Customer Side (Public Facing)
+The platform introduces a professional Digital E-Catalog accessible to all customers. It replaces manual price lists with a modern, responsive interface, allowing the public to browse the entire frozen food and grocery inventory effortlessly. This increases product visibility and ensures that every customer has real-time access to the latest offerings.
+
+💼 The Internal Side (Operations)
+Simultaneously, the portal serves as an Internal Management Tool for the company. By replacing manual paperwork with a web-based Attendance System, it ensures high data integrity and provides management with real-time tracking of staff attendance. This transition streamlines HR workflows and enhances overall administrative efficiency.
 
 ---
 
