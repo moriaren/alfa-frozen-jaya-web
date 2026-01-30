@@ -17,6 +17,9 @@ The platform introduces a professional Digital E-Catalog accessible to all custo
 💼 The Internal Side (Operations)
 Simultaneously, the portal serves as an Internal Management Tool for the company. By replacing manual paperwork with a web-based Attendance System, it ensures high data integrity and provides management with real-time tracking of staff attendance. This transition streamlines HR workflows and enhances overall administrative efficiency.
 
+📊 Data & Analytics Perspective
+Beyond system development, this project focuses on transforming manual operational data into structured, reliable datasets. The platform enables real-time data collection for attendance and inventory visibility, providing a foundation for operational reporting and future analytics use cases.
+
 ---
 
 ## 🌟 Key Features
