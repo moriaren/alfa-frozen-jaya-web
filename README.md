@@ -195,7 +195,7 @@ Proyek ini dikembangkan dalam program Project Based Learning (PBL) saat kegiatan
 
 * **Institusi:** BBPVP Bekasi
 * **Mitra Industri:** Alfa Frozen Jaya
-* * **Developer:** Tommy 
+* **Developer:** Tommy 
 
 Penggunaan kode mengikuti kesepakatan institusi dan mitra industri.
 
