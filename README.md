@@ -117,7 +117,6 @@ Security Considerations
 * MySQL Server
 
 Setup Steps
-
     ```bash
     git clone [https://github.com/username/alfa-frozen-jaya-portal.git](https://github.com/username/alfa-frozen-jaya-portal.git)
     cd alfa-frozen-jaya-portal
@@ -130,13 +129,11 @@ Setup Steps
     cp .env.example .env
     php artisan key:generate
     ```
-    
 Update database configuration di .env
     ```bash
     php artisan migrate --seed
     php artisan serve
     ```
-    
 Access the application at: `http://localhost:8000`
 
 ---
