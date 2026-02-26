@@ -1,4 +1,4 @@
-# Alfa Frozen Jaya (AFJ) - Digital Portal
+# Alfa Frozen Jaya (AFJ) - Digital Business Portal
 
 
 ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
@@ -7,49 +7,104 @@
 
 ---
 
-## 📖 Background
+## 📌 Project Overview
 
-Developed to drive Alfa Frozen Jaya's digital transformation, this portal is designed as a dual-sided solution to modernize both market presence and operational management.
+Alfa Frozen Jaya Digital Portal adalah aplikasi web berbasis Laravel yang dikembangkan dalam program Project Based Learning (PBL) / OJT BBPVP Bekasi untuk mendukung transformasi digital operasional mitra industri.
 
-🌐 The Customer Side (Public Facing)
-The platform introduces a professional Digital E-Catalog accessible to all customers. It replaces manual price lists with a modern, responsive interface, allowing the public to browse the entire frozen food and grocery inventory effortlessly. This increases product visibility and ensures that every customer has real-time access to the latest offerings.
+Proyek ini mengintegrasikan:
 
-💼 The Internal Side (Operations)
-Simultaneously, the portal serves as an Internal Management Tool for the company. By replacing manual paperwork with a web-based Attendance System, it ensures high data integrity and provides management with real-time tracking of staff attendance. This transition streamlines HR workflows and enhances overall administrative efficiency.
+🌐 Digital Product Catalog (Customer Facing)
+🧑‍💼 Web-based Attendance System (Internal Operations)
 
-📊 Data & Analytics Perspective
-Beyond system development, this project focuses on transforming manual operational data into structured, reliable datasets. The platform enables real-time data collection for attendance and inventory visibility, providing a foundation for operational reporting and future analytics use cases.
+Tujuan utama proyek ini adalah menggantikan proses manual (price list & absensi kertas) menjadi sistem digital terstruktur yang mendukung efisiensi operasional dan integritas data.
 
 ---
 
-## 🌟 Key Features
+## 🎯 Problem Statement
 
-### 1. Digital Katalog (Customer Facing)
-* **Seamless Browsing:** A modern interface designed for effortless exploration of frozen food and staple goods.
+Sebelum implementasi sistem:
+- Daftar harga produk masih dibagikan secara manual.
+- Informasi produk tidak terpusat dan sulit diperbarui secara real-time.
+- Absensi karyawan menggunakan pencatatan manual (rawan kesalahan & manipulasi).
+- Tidak tersedia data terstruktur untuk kebutuhan pelaporan.
+
+---
+
+💡 Solution Architecture
+
+Sistem dibangun menggunakan pendekatan MVC Laravel dengan pemisahan yang jelas antara:
+- Layer Presentasi (Blade + Tailwind CSS)
+- Layer Aplikasi (Controller & Validation)
+- Layer Data (Eloquent ORM + MySQL)
+
+High-Level Architecture
+```
+Client (Browser / Mobile)
+↓
+Laravel Routes
+↓
+Controllers
+↓
+Models (Eloquent ORM)
+↓
+MySQL Database
+```
+
+---
+
+## 🌟 Core Features
+
+### 1. Digital Product Catalog (Public)
+* Real-time price display
   <img src="public/images/RM1.jpg" width="800" alt="Screenshot Home">
-* **Product Catalog:** A grid-organized layout featuring high-quality product images and pricing for better user conversion.
+* Grid-based product listing
   <img src="public/images/RM2.jpg" width="800" alt="Screenshot Dekstop">
-* **Mobile-First Design:** Featuring an intuitive bottom navigation bar for a native app-like experience on smartphones.
+* Responsive UI (Mobile-First)
   <br><img src="public/images/RM3.jpeg" width="280" alt="Screenshot Mobile">
-* **Reseller Gateway:** A dedicated landing page for partnership information and reseller registration.
+* Reseller registration landing page
   <img src="public/images/RM4.jpg" width="800" alt="Screenshot Reseller">
+* Clean navigation (Desktop & Bottom Navbar Mobile)
 
-### 2. Attendance System (Internal Operations)
-* **Secure Authentication:** A dedicated gateway for staff to access internal features safely.
-  <img src="public/images/RM5.jpg" width="800" alt="Screenshot Login">
-* **Admin Staff Monitoring:** A comprehensive backend table for administrators to monitor attendance, ensuring operational efficiency and disciplined payroll management.
-  <img src="public/images/RM6.jpg" width="800" alt="Screenshot Administrators">
-* **Digital Attendance Logs:** A specialized system for employees to record daily clock-in and clock-out times.
-  <img src="public/images/RM7.jpg" width="800" alt="Screenshot Attendance">
+Impact:
+
+- Meningkatkan visibilitas produk
+- Memberikan pengalaman browsing modern
+- Memudahkan update harga & produk oleh admin
 
 ---
 
-## 🛠️ Stack Teknologi
+### 2. Attendance Management System (Internal)
+* Secure authentication (Login-based access)
+  <img src="public/images/RM5.jpg" width="800" alt="Screenshot Login">
+* Admin dashboard monitoring
+  <img src="public/images/RM6.jpg" width="800" alt="Screenshot Administrators">
+* Clock-in / Clock-out digital logging
+  <img src="public/images/RM7.jpg" width="800" alt="Screenshot Attendance">
+* Centralized attendance records
 
-* **Framework:** Laravel 10 (PHP 8.1+)
-* **Frontend:** Tailwind CSS & Alpine.js
-* **Database:** MySQL
-* **Icons:** Heroicons
+Impact:
+
+- Eliminasi pencatatan manual
+- Data absensi tersimpan terstruktur
+- Mempermudah rekap dan monitoring
+
+---
+
+## 🛠️ Tech Stack & Engineering Decisions
+```
+Layer	        Teknologi	            Alasan
+Backend	        Laravel 10	            Struktur MVC solid, security built-in
+Frontend	    Blade + Tailwind CSS	Rapid UI development
+Interactivity	Alpine.js	            Lightweight reactive components
+Database	    MySQL	                Relational integrity
+ORM	            Eloquent	            Clean & expressive query building
+```
+
+Security Considerations
+- CSRF Protection (Laravel built-in)
+- Authentication middleware
+- Form validation via Request validation
+- Route protection untuk fitur internal
 
 ---
 
@@ -61,52 +116,80 @@ Beyond system development, this project focuses on transforming manual operation
 * Node.js & NPM
 * MySQL Server
 
-### Steps to Run
-1.  **Clone Repository**
+Setup Steps
     ```bash
     git clone [https://github.com/username/alfa-frozen-jaya-portal.git](https://github.com/username/alfa-frozen-jaya-portal.git)
     cd alfa-frozen-jaya-portal
     ```
-
-2.  **Install Dependencies**
     ```bash
     composer install
     npm install && npm run build
     ```
-
-3.  **Environment Configuration**
     ```bash
     cp .env.example .env
     php artisan key:generate
     ```
-    *Sesuaikan variabel `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` di file `.env`.*
-
-4.  **Database Migration & Seeding**
+Update database configuration di .env
     ```bash
     php artisan migrate --seed
-    ```
-
-5.  **Launch Server**
-    ```bash
     php artisan serve
     ```
-    Access the application at: `http://localhost:8000`
+Access the application at: `http://localhost:8000`
 
 ---
 
-## 📂 Project Structure
-* `resources/views/components/`: Contains Desktop and Mobile Navbar components.
-* `app/Http/Controllers/`: Core logic for the catalog and attendance algorithms.
-* `public/images/`: Visual assets and branding logos.
+## 📂 Project Structure Highlights
+```
+app/
+ ├── Http/
+ │    ├── Controllers/
+ │    └── Middleware/
+ ├── Models/
+resources/
+ ├── views/
+ │    ├── components/
+ │    └── layouts/
+public/
+ └── images/
+database/
+ ├── migrations/
+ └── seeders/
+```
+---
 
-## 📄 Project Status & License
-Developed as part of the Project Based Learning (PBL) / On the Job Training (OJT) program.
+## 👨‍💻 My Role & Contribution
 
-* **Developer:** Tommy
-* **Institution:** BBPVP Bekasi
-* **Industry Partner:** Alfa Frozen Jaya (AFJ)
-
-All rights to design assets and source code are subject to the agreement between the educational institution and the industry partner. Use outside of educational or AFJ operational purposes requires written permission.
+Sebagai developer dalam proyek ini, saya:
+- Mendesain struktur database dan relasi tabel
+- Mengimplementasikan sistem autentikasi
+- Mengembangkan fitur absensi digital
+- Membangun UI responsif menggunakan Tailwind CSS
+- Mengelola migrasi dan seeding database
+- Mengintegrasikan validasi & proteksi route
 
 ---
-**Maintained by:** Tommy ([@tommoriaren](https://github.com/tommoriaren))
+
+## 📈 Learning Outcomes
+
+Melalui proyek ini, saya memperdalam:
+- Clean MVC architecture
+- Database relational design
+- Laravel authentication & middleware
+- Form validation & data integrity
+- Responsive UI development
+- Real-world requirement translation menjadi sistem teknis
+
+---
+
+## 📄 Project Context
+Proyek ini dikembangkan dalam program Project Based Learning (PBL) saat kegiatan On the Job Training (OJT)
+
+* **Institusi:** BBPVP Bekasi
+* **Mitra Industri:** Alfa Frozen Jaya
+* * **Developer:** Tommy 
+
+Penggunaan kode mengikuti kesepakatan institusi dan mitra industri.
+
+---
+
+**Maintained by:** Tommy ([@moriaren](https://github.com/moriaren))
