@@ -116,25 +116,38 @@ Security Considerations
 * Node.js & NPM
 * MySQL Server
 
-Setup Steps
+Langkah Instalasi
+
+1️⃣ Clone Repository
     ```bash
     git clone [https://github.com/username/alfa-frozen-jaya-portal.git](https://github.com/username/alfa-frozen-jaya-portal.git)
     cd alfa-frozen-jaya-portal
     ```
+2️⃣ Install Dependencies
     ```bash
     composer install
     npm install && npm run build
     ```
+3️⃣ Konfigurasi Environment
     ```bash
     cp .env.example .env
     php artisan key:generate
     ```
-Update database configuration di .env
+Sesuaikan konfigurasi berikut di file .env:
+    ```bash
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
+    ```
+4️⃣ Migrasi & Seeding Database
     ```bash
     php artisan migrate --seed
+    ```
+5️⃣ Menjalankan Server
+    ```bash
     php artisan serve
     ```
-Access the application at: `http://localhost:8000`
+Akses aplikasi melalui: `http://localhost:8000`
 
 ---
 
