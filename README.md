@@ -13,8 +13,8 @@ Alfa Frozen Jaya Digital Portal adalah aplikasi web berbasis Laravel yang dikemb
 
 Proyek ini mengintegrasikan:
 
-🌐 Digital Product Catalog (Customer Facing)
-🧑‍💼 Web-based Attendance System (Internal Operations)
+- 🌐 Digital Product Catalog (Customer Facing)
+- 🧑‍💼 Web-based Attendance System (Internal Operations)
 
 Tujuan utama proyek ini adalah menggantikan proses manual (price list & absensi kertas) menjadi sistem digital terstruktur yang mendukung efisiensi operasional dan integritas data.
 
