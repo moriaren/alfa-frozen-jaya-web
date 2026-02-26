@@ -56,13 +56,13 @@ MySQL Database
 
 ### 1. Digital Product Catalog (Public)
 * Real-time price display
-  <img src="public/images/RM1.jpg" width="800" alt="Screenshot Home">
+  <br><img src="public/images/RM1.jpg" width="800" alt="Screenshot Home">
 * Grid-based product listing
-  <img src="public/images/RM2.jpg" width="800" alt="Screenshot Dekstop">
+  <br><img src="public/images/RM2.jpg" width="800" alt="Screenshot Dekstop">
 * Responsive UI (Mobile-First)
   <br><img src="public/images/RM3.jpeg" width="280" alt="Screenshot Mobile">
 * Reseller registration landing page
-  <img src="public/images/RM4.jpg" width="800" alt="Screenshot Reseller">
+  <br><img src="public/images/RM4.jpg" width="800" alt="Screenshot Reseller">
 * Clean navigation (Desktop & Bottom Navbar Mobile)
 
 Impact:
@@ -75,11 +75,11 @@ Impact:
 
 ### 2. Attendance Management System (Internal)
 * Secure authentication (Login-based access)
-  <img src="public/images/RM5.jpg" width="800" alt="Screenshot Login">
+  <br><img src="public/images/RM5.jpg" width="800" alt="Screenshot Login">
 * Admin dashboard monitoring
-  <img src="public/images/RM6.jpg" width="800" alt="Screenshot Administrators">
+  <br><img src="public/images/RM6.jpg" width="800" alt="Screenshot Administrators">
 * Clock-in / Clock-out digital logging
-  <img src="public/images/RM7.jpg" width="800" alt="Screenshot Attendance">
+  <br><img src="public/images/RM7.jpg" width="800" alt="Screenshot Attendance">
 * Centralized attendance records
 
 Impact:
